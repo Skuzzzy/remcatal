@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class TokenizedExpressionFactory
 {	
-	public ArrayList<String> TokenizedExpression(String expression)
+	public ArrayList<String> StringTokenizedExpression(String expression)
 	{
 		int position = 0;
 		ArrayList<String> tokenExpr = new ArrayList<String>();		
@@ -30,20 +30,24 @@ public class TokenizedExpressionFactory
 					currentCharacter = expression.charAt(position);
 				}
 				//TODO Construct number token here with currentTokenString and add to the tokenExpr ArrayList
+				tokenExpr.add(currentTokenString);	
 			}
 			else if(isOperator(currentCharacter)) // Current char is a single char operator
 			{
 				//TODO Construct operator token where with the token char
+				tokenExpr.add(""+currentCharacter);	
 				position++;
 			}
 			else if(currentCharacter == '(')
 			{
 				//TODO Construct a l-paren token	
+				tokenExpr.add("(");	
 				position++;
 			}
 			else if(currentCharacter == ')')
 			{
 				//TODO Construct a r-paren token 
+				tokenExpr.add(")");	
 				position++;
 			}
 			else if(Character.isLetter(currentCharacter)) // This is a function
@@ -57,7 +61,8 @@ public class TokenizedExpressionFactory
 				 	position++;
 					currentCharacter = expression.charAt(position);
 			 	}
-			 	//TODO Construct number token here with currentTokenString and add to the tokenExpr ArrayList
+			 	//TODO Construct function token here with currentTokenString and add to the tokenExpr ArrayList
+				tokenExpr.add(currentTokenString);	
 			}
 		}	
 		
