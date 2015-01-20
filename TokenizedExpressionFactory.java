@@ -1,7 +1,19 @@
 import java.util.ArrayList;
 
 public class TokenizedExpressionFactory
-{	
+{
+
+	public ArrayList<Token> getTokensFromString(String expression)
+	{
+		return TokenizedExpression(StringTokenizedExpression(expression));
+	}
+
+	
+	public ArrayList<Token> TokenizedExpression(ArrayList<String> expressionList)
+	{
+		return new ArrayList<Token>();
+	}
+	
 	public ArrayList<String> StringTokenizedExpression(String expression)
 	{
 		int position = 0;
@@ -77,7 +89,9 @@ public class TokenizedExpressionFactory
 			}
 			else
 			{
-				// Handle bad input here
+				//TODO Handle bad input here
+				System.out.println(currentCharacter + " not recognized by parser. Character will be skipped");
+				position++;
 			}
 		}	
 		
