@@ -53,6 +53,13 @@ public class TokenizedExpressionFactory
 				tokenExpr.add(")");	
 				position++;
 			}
+			else if(currentCharacter == ',')
+			{
+				//TODO Construct an argument sep token here
+				tokenExpr.add(",");
+				position++;
+				
+			}
 			else if(Character.isLetter(currentCharacter)) // This is a function
 			{	
 
@@ -67,6 +74,10 @@ public class TokenizedExpressionFactory
 				}
 			 	//TODO Construct function token here with currentTokenString and add to the tokenExpr ArrayList
 				tokenExpr.add(currentTokenString);	
+			}
+			else
+			{
+				// Handle bad input here
 			}
 		}	
 		
