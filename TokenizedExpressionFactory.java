@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.lang.StringBuilder;
 
 public class TokenizedExpressionFactory
 {	
@@ -60,12 +59,9 @@ public class TokenizedExpressionFactory
 			 	}
 			 	//TODO Construct number token here with currentTokenString and add to the tokenExpr ArrayList
 			}
-		 	 
-
 		}	
 		
 		return tokenExpr;	
-
 	}	
 
 	private boolean isOperator(char ch)
