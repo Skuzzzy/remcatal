@@ -30,11 +30,19 @@ public class TokenizedExpressionFactory
 			}
 			else if(Character.isDigit(currentCharacter) || currentCharacter == '.') // Current char is the start of a number
 			{	
-				//TODO Make sure numbers like 5.5.5 do not get parsed properly
-				
 				
 				while((position<exprLen) && (Character.isDigit(currentCharacter) || currentCharacter == '.'))
 				{
+					if(currentCharacter == '.')
+					{
+						if(currentTokenString.contains('.')) // Prevents numbers like 5.5.5 from being successfully parsed
+						{
+							System.out.println("Number already has decimal");
+							//TODO Handle Error
+						}
+					}
+
+
 					currentTokenString += currentCharacter;
 					position++;
 					if(position<exprLen)
