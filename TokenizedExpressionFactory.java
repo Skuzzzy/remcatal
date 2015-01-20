@@ -18,17 +18,20 @@ public class TokenizedExpressionFactory
 			}
 			else if(Character.isDigit(currentCharacter) || currentCharacter == '.') // Current char is the start of a number
 			{	
-
 				//TODO Make sure numbers like 5.5.5 do not get parsed properly
-				currentTokenString += currentCharacter;
-				position++;
-				currentCharacter = expression.charAt(position);
-				while((Character.isDigit(currentCharacter) || currentCharacter == '.') && (position<exprLen))
+				
+				
+				while((position<exprLen) && (Character.isDigit(currentCharacter) || currentCharacter == '.'))
 				{
-					currentTokenString += currentCharacter;	
+					currentTokenString += currentCharacter;
 					position++;
-					currentCharacter = expression.charAt(position);
+					if(position<exprLen)
+					{
+						currentCharacter = expression.charAt(position);
+					}
+					
 				}
+
 				//TODO Construct number token here with currentTokenString and add to the tokenExpr ArrayList
 				tokenExpr.add(currentTokenString);	
 			}
@@ -52,15 +55,16 @@ public class TokenizedExpressionFactory
 			}
 			else if(Character.isLetter(currentCharacter)) // This is a function
 			{	
-			 	currentTokenString += currentCharacter;
-			 	position++;
-			 	currentCharacter = expression.charAt(position);
-			 	while((Character.isLetter(currentCharacter)) && (position<exprLen))
-			 	{
-				 	currentTokenString += currentCharacter;	
-				 	position++;
-					currentCharacter = expression.charAt(position);
-			 	}
+
+				while(position<exprLen && Character.isLetter(currentCharacter))
+				{
+					currentTokenString += currentCharacter;
+					position++;
+					if(position<exprLen)
+					{
+						currentCharacter = expression.charAt(position);
+					}
+				}
 			 	//TODO Construct function token here with currentTokenString and add to the tokenExpr ArrayList
 				tokenExpr.add(currentTokenString);	
 			}
