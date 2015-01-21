@@ -102,18 +102,10 @@ public class TokenizedExpressionFactory
 	{
 		return (ch == '+' || ch == '-' || ch == '/' || ch == '*' || ch == '^');
 	}
-	private boolean isOperator(String str)
-	{
-		return (str == "+" || str == "-" || str == "/" || str == "*" || str == "^");
-	}
 
 	private boolean isPartOfNumber(char ch)
 	{
 		return (Character.isDigit(ch) || ch == '.');
-	}
-	private boolean isNumber(String str)
-	{
-		return str.matches();
 	}
 	
 }
