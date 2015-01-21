@@ -2,6 +2,8 @@ import java.math.BigDecimal;
 
 public class Division_Token implements Token
 {
+	
+	public static int PRECISION = 15;	
 
 	Token left;
 	Token right;
@@ -14,6 +16,6 @@ public class Division_Token implements Token
 	
 	public BigDecimal evaluate()
 	{
-		return left.evaluate().divide(right.evaluate());	
+		return left.evaluate().divide(right.evaluate(),PRECISION);	
 	}
 } 
