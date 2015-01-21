@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import ShuntingYardToken;
 
 public class TokenizedExpressionFactory
 {
@@ -14,7 +15,7 @@ public class TokenizedExpressionFactory
 	/*
 		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
 	*/	
-	public ArrayList<String> StringTokenizedExpression(String expression)
+	public ArrayList<ShuntingYardToken> StringTokenizedExpression(String expression)
 	{
 		int position = 0;
 		ArrayList<String> tokenExpr = new ArrayList<String>();		
@@ -50,26 +51,26 @@ public class TokenizedExpressionFactory
 					}
 					
 				}
-				tokenExpr.add(currentTokenString);	
+				//tokenExpr.add(currentTokenString);	
 			}
 			else if(isOperator(currentCharacter)) // Current char is a single char operator
 			{
-				tokenExpr.add(""+currentCharacter);	
+				//tokenExpr.add(""+currentCharacter);	
 				position++;
 			}
 			else if(currentCharacter == '(')
 			{
-				tokenExpr.add("(");	
+				//tokenExpr.add("(");	
 				position++;
 			}
 			else if(currentCharacter == ')')
 			{
-				tokenExpr.add(")");	
+				//tokenExpr.add(")");	
 				position++;
 			}
 			else if(currentCharacter == ',')
 			{
-				tokenExpr.add(",");
+				//tokenExpr.add(",");
 				position++;
 				
 			}
@@ -85,7 +86,7 @@ public class TokenizedExpressionFactory
 						currentCharacter = expression.charAt(position);
 					}
 				}
-				tokenExpr.add(currentTokenString);	
+				//tokenExpr.add(currentTokenString);	
 			}
 			else
 			{
