@@ -1,1 +1,3 @@
-chips!
+I am using a modified version of the shunting-yard algorithm in order to create the postfix expression used to construct the evaluation tree.
+http://en.wikipedia.org/wiki/Shunting-yard_algorithm
+
