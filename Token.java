@@ -1,7 +1,7 @@
 import java.util.ArrayList;
+import java.math.BigDecimal;
 
 public interface Token
 {
-	public Token evaluate(ArrayList<Token> args);
-	public String toString();
+	public BigDecimal evaluate();
 }

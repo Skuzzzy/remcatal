@@ -9,9 +9,9 @@ public class TokenizedExpressionFactory
 	}
 
 	
-	public ArrayList<Token> TokenizedExpression(ArrayList<String> expressionList)
+	public Token TokenizedExpression(ArrayList<String> expressionList)
 	{
-		return new ArrayList<Token>();
+		return new Token;
 	}
 	
 	public ArrayList<String> StringTokenizedExpression(String expression)
@@ -35,13 +35,12 @@ public class TokenizedExpressionFactory
 				{
 					if(currentCharacter == '.')
 					{
-						if(currentTokenString.contains('.')) // Prevents numbers like 5.5.5 from being successfully parsed
+						if(currentTokenString.contains(".")) // Prevents numbers like 5.5.5 from being successfully parsed
 						{
 							System.out.println("Number already has decimal");
 							//TODO Handle Error
 						}
 					}
-
 
 					currentTokenString += currentCharacter;
 					position++;
@@ -51,31 +50,25 @@ public class TokenizedExpressionFactory
 					}
 					
 				}
-
-				//TODO Construct number token here with currentTokenString and add to the tokenExpr ArrayList
 				tokenExpr.add(currentTokenString);	
 			}
 			else if(isOperator(currentCharacter)) // Current char is a single char operator
 			{
-				//TODO Construct operator token where with the token char
 				tokenExpr.add(""+currentCharacter);	
 				position++;
 			}
 			else if(currentCharacter == '(')
 			{
-				//TODO Construct a l-paren token	
 				tokenExpr.add("(");	
 				position++;
 			}
 			else if(currentCharacter == ')')
 			{
-				//TODO Construct a r-paren token 
 				tokenExpr.add(")");	
 				position++;
 			}
 			else if(currentCharacter == ',')
 			{
-				//TODO Construct an argument sep token here
 				tokenExpr.add(",");
 				position++;
 				
@@ -92,7 +85,6 @@ public class TokenizedExpressionFactory
 						currentCharacter = expression.charAt(position);
 					}
 				}
-			 	//TODO Construct function token here with currentTokenString and add to the tokenExpr ArrayList
 				tokenExpr.add(currentTokenString);	
 			}
 			else
