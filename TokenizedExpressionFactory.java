@@ -4,13 +4,13 @@ public class TokenizedExpressionFactory
 {
 	
 	/*
-		Takes an ArrayList<String> and creates a tree of Tokens, returning the root node of the tree
+		
 	*/
 	public Token TokenizedExpression(ArrayList<String> expressionList)
 	{
 		return new Number_Token("0");
 	}
-	
+
 	/*
 		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
 	*/	
@@ -28,10 +28,10 @@ public class TokenizedExpressionFactory
 			{
 				position++;
 			}
-			else if(Character.isDigit(currentCharacter) || currentCharacter == '.') // Current char is the start of a number
+			else if(isPartOfNumber(currentCharacter)) // Current char is the start of a number
 			{	
 				
-				while((position<exprLen) && (Character.isDigit(currentCharacter) || currentCharacter == '.'))
+				while((position<exprLen) && isPartOfNumber(currentCharacter))
 				{
 					if(currentCharacter == '.')
 					{
@@ -100,14 +100,12 @@ public class TokenizedExpressionFactory
 
 	private boolean isOperator(char ch)
 	{
-		if(ch == '+' || ch == '-' || ch == '/' || ch == '*' || ch == '^')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return (ch == '+' || ch == '-' || ch == '/' || ch == '*' || ch == '^');
+	}
+
+	private boolean isPartOfNumber(char ch)
+	{
+		return (Character.isDigit(ch) || ch == '.');
 	}
 	
 }
