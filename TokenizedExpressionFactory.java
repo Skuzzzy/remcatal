@@ -3,17 +3,14 @@ import java.util.ArrayList;
 public class TokenizedExpressionFactory
 {
 
-	public ArrayList<Token> getTokensFromString(String expression)
-	{
-		return TokenizedExpression(StringTokenizedExpression(expression));
-	}
-
-	
 	public Token TokenizedExpression(ArrayList<String> expressionList)
 	{
-		return new Token;
+		return new Number_Token("0");
 	}
 	
+	/*
+		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
+	*/	
 	public ArrayList<String> StringTokenizedExpression(String expression)
 	{
 		int position = 0;

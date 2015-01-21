@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class Number_Token
+public class Number_Token implements Token
 {
 	
 	public BigDecimal number;

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.math.BigDecimal;
 
-public class Subtraction_Token
+public class Subtraction_Token implements Token
 {
 
 	Token left;
@@ -15,6 +15,6 @@ public class Subtraction_Token
 	
 	public BigDecimal evaluate()
 	{
-		left.evaluate().subtract(right.evaluate());	
+		return left.evaluate().subtract(right.evaluate());	
 	}
 } 
