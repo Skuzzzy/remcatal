@@ -2,7 +2,10 @@ import java.util.ArrayList;
 
 public class TokenizedExpressionFactory
 {
-
+	
+	/*
+		Takes an ArrayList<String> and creates a tree of Tokens, returning the root node of the tree
+	*/
 	public Token TokenizedExpression(ArrayList<String> expressionList)
 	{
 		return new Number_Token("0");
