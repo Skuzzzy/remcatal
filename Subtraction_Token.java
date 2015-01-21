@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.math.BigDecimal;
 
 public class Subtraction_Token implements Token
