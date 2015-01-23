@@ -6,8 +6,33 @@ public class TokenizedExpressionFactory
 
 	public ArrayList<ShuntingYardToken> convertToPostfix(ArrayList<ShuntingYardToken> expression)
 	{
-		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>();
+		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>(); // Output Queue
 		Stack operatorStack = new Stack();
+		int index = 0;		
+
+		while(index<expression.size()) // While there are tokens to be read
+		{
+			currentToken = expression.get(index);
+			switch(currentToken.getType()
+			{
+				case ShuntingYardToken.Type.NUMBER:
+					break;
+				case ShuntingYardToken.Type.FUNCTION:
+					break;
+				case ShuntingYardToken.Type.FUNCTION_SEPARATOR:
+					break;
+				case ShuntingYardToken.Type.LEFT_PARENTHESIS:
+					break;
+				case ShuntingYardToken.Type.RIGHT_PARENTHESIS:
+					break;
+				case ShuntingYardToken.Type.OPERATOR:
+					break;
+				default:
+					System.out.println("Skipping non recognized token type");
+					index++;
+					break;	
+			}
+		}
 
 		return postfixExpression;
 	}
