@@ -7,7 +7,7 @@ public class TokenizedExpressionFactory
 	public ArrayList<ShuntingYardToken> convertToPostfix(ArrayList<ShuntingYardToken> expression)
 	{
 		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>(); // Output Queue
-		Stack<ShuntingYardToken> operatorStack = new Stack();
+		Stack<ShuntingYardToken> operatorStack = new Stack<ShuntingYardToken>();
 		int index = 0;
 		ShuntingYardToken currentToken;
 
@@ -24,7 +24,9 @@ public class TokenizedExpressionFactory
 					operatorStack.add(currentToken);
 					break;
 				case FUNCTION_SEPARATOR:
-					// TODO Pop operators off the stack untill ( reached
+					postfixExpression.addAll(popOperatorsUntillParenthesis(operatorStack));
+					operatorStack = clearStackUntillParenthesis(operatorStack);
+					// TODO
 					postfixExpression.add(currentToken);	
 					break;
 				case OPERATOR:
@@ -34,7 +36,9 @@ public class TokenizedExpressionFactory
 					operatorStack.add(currentToken);
 					break;
 				case RIGHT_PARENTHESIS:
-					// TODO Pop operators off the stack untill ( reached
+					postfixExpression.addAll(popOperatorsUntillParenthesis(operatorStack));
+					operatorStack = clearStackUntillParenthesis(operatorStack);
+					//TODO
 					break;
 				default:
 					System.out.println("Skipping non recognized token type");
@@ -75,7 +79,7 @@ public class TokenizedExpressionFactory
 		// TODO Handle mismatched parenthesis error here
 		return null;
 	}
-	private Stack clearStackUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
+	private Stack<ShuntingYardToken> clearStackUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
 	{
 		while(operatorStack.pop().getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS){}
 		return operatorStack;
