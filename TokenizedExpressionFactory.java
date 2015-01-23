@@ -13,7 +13,7 @@ public class TokenizedExpressionFactory
 
 		while(index<expression.size()) // While there are tokens to be read
 		{
-			currentToken = expression.get(index);
+			currentToken = expression.get(index); // Read the next token
 			switch(currentToken.getType())
 			{
 				case NUMBER:
@@ -37,8 +37,8 @@ public class TokenizedExpressionFactory
 					break;
 				case RIGHT_PARENTHESIS:
 					postfixExpression.addAll(popOperatorsUntillParenthesis(operatorStack));
-					operatorStack = clearStackUntillParenthesis(operatorStack);
-					if(operatorStack.peek().getType() == FUNCTION)
+					operatorStack = clearStackUntillParenthesis(operatorStack).pop(); // the pop at the end here is to discard the left parenthesis from the stack when the function returns
+					if(operatorStack.peek().getType() == ShuntingYardToken.Type.FUNCTION)
 					{
 						postfixExpression.add(operatorStack.pop());
 					}
@@ -84,7 +84,10 @@ public class TokenizedExpressionFactory
 	}
 	private Stack<ShuntingYardToken> clearStackUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
 	{
-		while(operatorStack.pop().getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS){}
+		while(operatorStack.peek().getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
+		{
+			operatorStack.pop();
+		}
 		return operatorStack;
 	}
 	
