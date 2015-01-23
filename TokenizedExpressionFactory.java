@@ -16,21 +16,40 @@ public class TokenizedExpressionFactory
 			switch(currentToken.getType()
 			{
 				case ShuntingYardToken.Type.NUMBER:
+					postfixExpression.add(currentToken);
+					index++;
 					break;
 				case ShuntingYardToken.Type.FUNCTION:
+					operatorStack.add(currentToken);
 					break;
 				case ShuntingYardToken.Type.FUNCTION_SEPARATOR:
-					break;
-				case ShuntingYardToken.Type.LEFT_PARENTHESIS:
-					break;
-				case ShuntingYardToken.Type.RIGHT_PARENTHESIS:
+					// TODO Pop operators off the stack untill ( reached
+					postfixExpression.add(currentToken);	
 					break;
 				case ShuntingYardToken.Type.OPERATOR:
+					// TODO
+					break;
+				case ShuntingYardToken.Type.LEFT_PARENTHESIS:
+					operatorStack.add(currentToken);
+					break;
+				case ShuntingYardToken.Type.RIGHT_PARENTHESIS:
+					// TODO Pop operators off the stack untill ( reached
 					break;
 				default:
 					System.out.println("Skipping non recognized token type");
 					index++;
 					break;	
+			}
+			while(operatorStack.size() != 0)
+			{
+				currentToken = operatorStack.pop();
+				if(currentToken.getType() != ShuntingYardToken.Type.RIGHT_PARENTHESIS && currentToken.getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
+				{
+					postfixExpression.add(currentToken);
+				}
+				else{
+					System.out.println("Mismatched parenthesis found on operatorStack");
+				}
 			}
 		}
 
