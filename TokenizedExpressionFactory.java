@@ -4,14 +4,6 @@ public class TokenizedExpressionFactory
 {
 	
 	/*
-		
-	*/
-	public Token TokenizedExpression(ArrayList<String> expressionList)
-	{
-		return new Number_Token("0");
-	}
-
-	/*
 		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
 	*/	
 	public ArrayList<ShuntingYardToken> StringTokenizedExpression(String expression)
