@@ -38,7 +38,10 @@ public class TokenizedExpressionFactory
 				case RIGHT_PARENTHESIS:
 					postfixExpression.addAll(popOperatorsUntillParenthesis(operatorStack));
 					operatorStack = clearStackUntillParenthesis(operatorStack);
-					//TODO
+					if(operatorStack.peek().getType() == FUNCTION)
+					{
+						postfixExpression.add(operatorStack.pop());
+					}
 					break;
 				default:
 					System.out.println("Skipping non recognized token type");
