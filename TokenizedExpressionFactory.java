@@ -7,32 +7,33 @@ public class TokenizedExpressionFactory
 	public ArrayList<ShuntingYardToken> convertToPostfix(ArrayList<ShuntingYardToken> expression)
 	{
 		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>(); // Output Queue
-		Stack operatorStack = new Stack();
-		int index = 0;		
+		Stack<ShuntingYardToken> operatorStack = new Stack();
+		int index = 0;
+		ShuntingYardToken currentToken;
 
 		while(index<expression.size()) // While there are tokens to be read
 		{
 			currentToken = expression.get(index);
-			switch(currentToken.getType()
+			switch(currentToken.getType())
 			{
-				case ShuntingYardToken.Type.NUMBER:
+				case NUMBER:
 					postfixExpression.add(currentToken);
 					index++;
 					break;
-				case ShuntingYardToken.Type.FUNCTION:
+				case FUNCTION:
 					operatorStack.add(currentToken);
 					break;
-				case ShuntingYardToken.Type.FUNCTION_SEPARATOR:
+				case FUNCTION_SEPARATOR:
 					// TODO Pop operators off the stack untill ( reached
 					postfixExpression.add(currentToken);	
 					break;
-				case ShuntingYardToken.Type.OPERATOR:
+				case OPERATOR:
 					// TODO
 					break;
-				case ShuntingYardToken.Type.LEFT_PARENTHESIS:
+				case LEFT_PARENTHESIS:
 					operatorStack.add(currentToken);
 					break;
-				case ShuntingYardToken.Type.RIGHT_PARENTHESIS:
+				case RIGHT_PARENTHESIS:
 					// TODO Pop operators off the stack untill ( reached
 					break;
 				default:
@@ -55,16 +56,16 @@ public class TokenizedExpressionFactory
 
 		return postfixExpression;
 	}
-	private ArrayList<ShuntingYardToken> popOperatorsUntillParenthesis(Stack operatorStack)
+	private ArrayList<ShuntingYardToken> popOperatorsUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
 	{
-		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>();
+		ArrayList<ShuntingYardToken> operators = new ArrayList<ShuntingYardToken>();
 		ShuntingYardToken currentToken;
 		while(operatorStack.size() > 0)
 		{
 			currentToken = operatorStack.pop();
 			if(currentToken.getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
 			{
-				postfixExpression.add(currentToken);
+				operators.add(currentToken);
 			}
 			else
 			{
@@ -74,6 +75,11 @@ public class TokenizedExpressionFactory
 
 		// TODO Handle mismatched parenthesis error here
 		return null;
+	}
+	private Stack clearStackUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
+	{
+		while(operatorStack.pop().getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS){}
+		return operatorStack;
 	}
 	
 	/*

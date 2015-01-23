@@ -7,7 +7,7 @@ public class Main
 		ArrayList<ShuntingYardToken> newRef = chips.StringTokenizedExpression(args[0]);		
 		for(int i=0; i<newRef.size() ; i++)
 		{
-			System.out.println(newRef.get(i).data);
+			System.out.println(newRef.get(i).getData());
 		}
 	}
 }
