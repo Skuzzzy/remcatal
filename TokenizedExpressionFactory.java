@@ -1,7 +1,16 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class TokenizedExpressionFactory
 {
+
+	public ArrayList<ShuntingYardToken> convertToPostfix(ArrayList<ShuntingYardToken> expression)
+	{
+		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>();
+		Stack operatorStack = new Stack();
+
+		return postfixExpression;
+	}
 	
 	/*
 		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
