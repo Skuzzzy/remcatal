@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import ShuntingYardToken;
 
 public class TokenizedExpressionFactory
 {
@@ -18,7 +17,7 @@ public class TokenizedExpressionFactory
 	public ArrayList<ShuntingYardToken> StringTokenizedExpression(String expression)
 	{
 		int position = 0;
-		ArrayList<String> tokenExpr = new ArrayList<String>();		
+		ArrayList<ShuntingYardToken> tokenExpr = new ArrayList<ShuntingYardToken>();		
 		int exprLen = expression.length();
 
 		while(position<exprLen) // Ensure we only parse to the end of the expression
@@ -51,26 +50,26 @@ public class TokenizedExpressionFactory
 					}
 					
 				}
-				//tokenExpr.add(currentTokenString);	
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.NUMBER, currentTokenString));
 			}
 			else if(isOperator(currentCharacter)) // Current char is a single char operator
 			{
-				//tokenExpr.add(""+currentCharacter);	
+				tokenExpr.add(ShuntingYardToken.Type.OPERATOR, ""+currentCharacter);
 				position++;
 			}
 			else if(currentCharacter == '(')
 			{
-				//tokenExpr.add("(");	
+				tokenExpr.add(ShuntingYardToken.Type.LEFT_PARENTHESIS, "(");
 				position++;
 			}
 			else if(currentCharacter == ')')
 			{
-				//tokenExpr.add(")");	
+				tokenExpr.add(ShuntingYardToken.Type.RIGHT_PARENTHESIS, ")");
 				position++;
 			}
 			else if(currentCharacter == ',')
 			{
-				//tokenExpr.add(",");
+				tokenExpr.add(ShuntingYardToken.Type.FUNCTION_SEPARATOR, ",");
 				position++;
 				
 			}
@@ -86,7 +85,7 @@ public class TokenizedExpressionFactory
 						currentCharacter = expression.charAt(position);
 					}
 				}
-				//tokenExpr.add(currentTokenString);	
+				tokenExpr.add(ShuntingYardToken.Type.FUNCTION, currentTokenString);
 			}
 			else
 			{
