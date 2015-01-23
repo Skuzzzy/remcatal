@@ -53,7 +53,6 @@ public class TokenizedExpressionFactory
 				}
 			}
 		}
-
 		return postfixExpression;
 	}
 	private ArrayList<ShuntingYardToken> popOperatorsUntillParenthesis(Stack<ShuntingYardToken> operatorStack)
@@ -69,7 +68,7 @@ public class TokenizedExpressionFactory
 			}
 			else
 			{
-				return postfixExpression;
+				return operators;
 			}
 		}
 
