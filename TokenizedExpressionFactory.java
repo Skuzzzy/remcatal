@@ -40,10 +40,10 @@ public class TokenizedExpressionFactory
 					index++;
 					break;	
 			}
-			while(operatorStack.size() != 0)
+			while(operatorStack.size() > 0)
 			{
 				currentToken = operatorStack.pop();
-				if(currentToken.getType() != ShuntingYardToken.Type.RIGHT_PARENTHESIS && currentToken.getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
+				if(currentToken.getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
 				{
 					postfixExpression.add(currentToken);
 				}
@@ -55,9 +55,29 @@ public class TokenizedExpressionFactory
 
 		return postfixExpression;
 	}
+	private ArrayList<ShuntingYardToken> popOperatorsUntillParenthesis(Stack operatorStack)
+	{
+		ArrayList<ShuntingYardToken> postfixExpression = new ArrayList<ShuntingYardToken>();
+		ShuntingYardToken currentToken;
+		while(operatorStack.size() > 0)
+		{
+			currentToken = operatorStack.pop();
+			if(currentToken.getType() != ShuntingYardToken.Type.LEFT_PARENTHESIS)
+			{
+				postfixExpression.add(currentToken);
+			}
+			else
+			{
+				return postfixExpression;
+			}
+		}
+
+		// TODO Handle mismatched parenthesis error here
+		return null;
+	}
 	
 	/*
-		Takes a string representing some expression and breaks it down into smaller string peices ready to be processed into Tokens	
+		Takes a string representing some expression and breaks it down into Tokens	
 	*/	
 	public ArrayList<ShuntingYardToken> StringTokenizedExpression(String expression)
 	{
