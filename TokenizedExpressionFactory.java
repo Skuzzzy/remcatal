@@ -54,22 +54,22 @@ public class TokenizedExpressionFactory
 			}
 			else if(isOperator(currentCharacter)) // Current char is a single char operator
 			{
-				tokenExpr.add(ShuntingYardToken.Type.OPERATOR, ""+currentCharacter);
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.OPERATOR, ""+currentCharacter));
 				position++;
 			}
 			else if(currentCharacter == '(')
 			{
-				tokenExpr.add(ShuntingYardToken.Type.LEFT_PARENTHESIS, "(");
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.LEFT_PARENTHESIS, "("));
 				position++;
 			}
 			else if(currentCharacter == ')')
 			{
-				tokenExpr.add(ShuntingYardToken.Type.RIGHT_PARENTHESIS, ")");
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.RIGHT_PARENTHESIS, ")"));
 				position++;
 			}
 			else if(currentCharacter == ',')
 			{
-				tokenExpr.add(ShuntingYardToken.Type.FUNCTION_SEPARATOR, ",");
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.FUNCTION_SEPARATOR, ","));
 				position++;
 				
 			}
@@ -85,7 +85,7 @@ public class TokenizedExpressionFactory
 						currentCharacter = expression.charAt(position);
 					}
 				}
-				tokenExpr.add(ShuntingYardToken.Type.FUNCTION, currentTokenString);
+				tokenExpr.add(new ShuntingYardToken(ShuntingYardToken.Type.FUNCTION, currentTokenString));
 			}
 			else
 			{
